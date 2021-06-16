@@ -18,7 +18,11 @@ namespace sharpAHK
         /// <returns>Returns Contents of Clipboard with Option to Write New Clipboard Value</returns>
         public string Clipboard(string WriteText = "")
         {
-            if (WriteText != "") { SetVar("clipboard", WriteText); return WriteText; }  // user provided value to Write to Clipboard
+            if (WriteText != "")
+            {
+                // user provided value to Write to Clipboard
+                SetVar("clipboard", WriteText); return WriteText;
+            }
 
             bool AHKMethod = true;
 

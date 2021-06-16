@@ -33,8 +33,8 @@ namespace sharpAHK
 
 
         /// <summary>Intializes Hotkey Communication with Main Application - Allows for AutoHotkey to execute functions in Main Application (non-AHK Code like C#)</summary>
-        /// <param name="form">Name of the Form Setting Up the Hotkey. Ex: Hotkey_Setup(this);</param>
-        private void Hotkey_Setup(Form form)
+        /// <param name="OBJ">Name of the Form Setting Up the Hotkey. Ex: Hotkey_Setup(this);</param>
+        private void Hotkey_Setup(Object OBJ)
         {
             //you can have AutoHotkey communicate with the hosting environment 
             // 1 - Create Handler for your ahk code 
@@ -51,8 +51,7 @@ namespace sharpAHK
 
 
                 string[] parameters = { PressedHK };
-
-                object OBJ = form;
+                
                 var objType = OBJ.GetType();
                 var method = objType.GetMethod(fromAhk);
 
@@ -114,11 +113,11 @@ namespace sharpAHK
         }
 
         /// <summary>Save Command That Initializes Hotkeys Added using Add_Hotkey()</summary>
-        /// <param name="ThisForm">Name of the Form Setting Up the Hotkey. Ex: Save_Hotkeys(this);</param>
-        public void Save_Hotkeys(Form ThisForm)
+        /// <param name="ThisObject">Name of the Form Setting Up the Hotkey. Ex: Save_Hotkeys(this);</param>
+        public void Save_Hotkeys(Object ThisObject)
         {
             ErrorLog_Setup(false);
-            Hotkey_Setup(ThisForm);
+            Hotkey_Setup(ThisObject);
             Load_ahkString(hkList);
         }
 

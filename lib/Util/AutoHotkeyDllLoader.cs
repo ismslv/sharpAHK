@@ -34,11 +34,11 @@ namespace AutoHotkey.Interop.Util
                 return SafeLibraryHandle.LoadLibrary(relativePath);
             }
             else { 
-                return ExtractAndLoadEmbededResource(relativePath);
+                return ExtractAndLoadEmbeddedResource(relativePath);
             }
         }
 
-        private static SafeLibraryHandle ExtractAndLoadEmbededResource(string relativePath) {
+        private static SafeLibraryHandle ExtractAndLoadEmbeddedResource(string relativePath) {
             var assembly = typeof(AutoHotkeyEngine).Assembly;
             var resource = EmbededResourceHelper.FindByName(assembly, relativePath);
 

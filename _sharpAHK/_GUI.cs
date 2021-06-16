@@ -883,47 +883,35 @@ namespace sharpAHK
         }
 
         /// <summary>Sets the state of the Capslock key. Can also force the key to stay on or off.</summary>
-        /// <param name="OnState">Default = On || OnState = True (On): Turns on the key and removes the AlwaysOn/Off attribute of the key (if present). | OnState = False (Off): Turns off the key and removes the AlwaysOn/Off attribute of the key (if present). | AlwaysOn: Forces the key to stay on permanently | AlwaysOff: Forces the key to stay off permanently </param>
-        public void CapsLock(bool OnState = true)
+        /// <param name="iState">Default = On || OnState = True (On): Turns on the key and removes the AlwaysOn/Off attribute of the key (if present). | OnState = False (Off): Turns off the key and removes the AlwaysOn/Off attribute of the key (if present). | AlwaysOn: Forces the key to stay on permanently | AlwaysOff: Forces the key to stay off permanently </param>
+        public void CapsLock(bool iState = true, bool isAlways = false)
         {
-            string State = "On";
-            if (!OnState) { State = "Off"; }
-
             ErrorLog_Setup(false);
-            Execute("SetCapsLockState, " + State);
+            Execute("SetCapsLockState, " + (isAlways ? "Always" : "") + (iState ? "On" : "Off"));
         }
 
         /// <summary>Sets the state of the NumLock key. Can also force the key to stay on or off.</summary>
-        /// <param name="OnState">Default = AlwaysOn || On (True): Turns on the key and removes the AlwaysOn/Off attribute of the key (if present). | Off (False): Turns off the key and removes the AlwaysOn/Off attribute of the key (if present). | AlwaysOn: Forces the key to stay on permanently | AlwaysOff: Forces the key to stay off permanently </param>
-        public void NumLock(bool OnState = true)
+        /// <param name="iState">Default = AlwaysOn || On (True): Turns on the key and removes the AlwaysOn/Off attribute of the key (if present). | Off (False): Turns off the key and removes the AlwaysOn/Off attribute of the key (if present). | AlwaysOn: Forces the key to stay on permanently | AlwaysOff: Forces the key to stay off permanently </param>
+        public void NumLock(bool iState = true, bool isAlways = false)
         {
-            string State = "On";
-            if (!OnState) { State = "Off"; }
-
             ErrorLog_Setup(false);
-            Execute("SetNumLockState, " + State);
+            Execute("SetNumLockState, " + (isAlways ? "Always" : "") + (iState ? "On" : "Off"));
         }
 
         /// <summary>Sets the state of the ScrollLock key. Can also force the key to stay on or off.</summary>
-        /// <param name="OnState">Default = AlwaysOn || On (True): Turns on the key and removes the AlwaysOn/Off attribute of the key (if present). | Off (False): Turns off the key and removes the AlwaysOn/Off attribute of the key (if present). | AlwaysOn: Forces the key to stay on permanently | AlwaysOff: Forces the key to stay off permanently </param>
-        public void ScrollLock(bool OnState = true)
+        /// <param name="iState">Default = AlwaysOn || On (True): Turns on the key and removes the AlwaysOn/Off attribute of the key (if present). | Off (False): Turns off the key and removes the AlwaysOn/Off attribute of the key (if present). | AlwaysOn: Forces the key to stay on permanently | AlwaysOff: Forces the key to stay off permanently </param>
+        public void ScrollLock(bool iState = true, bool isAlways = false)
         {
-            string State = "On";
-            if (!OnState) { State = "Off"; }
-
             ErrorLog_Setup(false);
-            Execute("SetScrollLockState, " + State);
+            Execute("SetScrollLockState, " + (isAlways ? "Always" : "") + (iState ? "On" : "Off"));
         }
 
         /// <summary>Whether to restore the state of CapsLock after a Send.</summary>
-        /// <param name="OnState">On (True): This is the initial setting for all scripts: The CapsLock key will be restored to its former value if Send needed to change it temporarily for its operation. | Off (True): The state of the CapsLock key is not changed at all. As a result, Send will invert the case of the characters if Capslock happens to be ON during the operation. </param>
-        public void SetStoreCapslockMode(bool OnState = true)
+        /// <param name="iState">On (True): This is the initial setting for all scripts: The CapsLock key will be restored to its former value if Send needed to change it temporarily for its operation. | Off (True): The state of the CapsLock key is not changed at all. As a result, Send will invert the case of the characters if Capslock happens to be ON during the operation. </param>
+        public void SetStoreCapslockMode(bool iState = true)
         {
-            string State = "On";
-            if (!OnState) { State = "Off"; }
-
             ErrorLog_Setup(false);
-            Execute("SetStoreCapslockMode, " + State);
+            Execute("SetStoreCapslockMode, " + (iState ? "On" : "Off"));
         }
 
 
